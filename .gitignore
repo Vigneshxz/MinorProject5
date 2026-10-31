@@ -1,0 +1,21 @@
+# .NET build files
+bin/
+obj/
+.vs/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Local configuration and secrets
+**/appsettings.Development.json
+**/secrets.json
+.env
+.env.*
+
+# User-specific files
+*.user
+*.suo
+Scripts/fitness_manager.sql

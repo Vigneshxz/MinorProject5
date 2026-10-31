@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MinorProject5.Api/MinorProject5.Api.csproj" />
+  <Project Path="MinorProject5.Business/MinorProject5.Business.csproj" />
+  <Project Path="MinorProject5.Client/MinorProject5.Client.csproj" />
+  <Project Path="MinorProject5.Data/MinorProject5.Data.csproj" />
+</Solution>
