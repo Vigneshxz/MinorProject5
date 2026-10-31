@@ -130,22 +130,28 @@ public async Task<ActionResult> Update(
 
     // DELETE: api/clients/1
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult> Delete(int id)
+public async Task<ActionResult> Delete(int id)
+{
+    try
     {
-        try
-        {
-            bool deleted = await _service.DeleteAsync(id);
+        bool deleted = await _service.DeleteAsync(id);
 
-            if (!deleted)
-            {
-                return NotFound();
-            }
-
-            return Ok("Client deleted successfully.");
-        }
-        catch (ArgumentException ex)
+        if (!deleted)
         {
-            return BadRequest(ex.Message);
+            return NotFound();
         }
+
+        return Ok("Client deleted successfully.");
     }
+    catch (ArgumentException ex)
+    {
+        return BadRequest(ex.Message);
+    }
+    catch (MySqlException ex) when (ex.Number == 1451)
+    {
+        return Conflict(
+            "Cannot delete this client because they have associated training plans."
+        );
+    }
+}
 }
